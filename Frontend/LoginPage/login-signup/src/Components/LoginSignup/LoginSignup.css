@@ -76,6 +76,10 @@
   font-size: 18px;
 }
 
+.forgot-password span:hover {
+    text-decoration: underline; /* Underline the text on hover */
+  }
+
 .forgot-password span {
   color: #518aa6;
   cursor: pointer;
