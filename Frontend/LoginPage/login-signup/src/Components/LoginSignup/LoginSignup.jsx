@@ -16,10 +16,10 @@ export const LoginSignup = () => {
             <div className='underline'></div>
         </div>
         <div className='inputs'>
-            <div className='input'>
+        {action==="Login" ? <div></div> :<div className='input'>
                 <img src={user_icon} alt=''/>
-                <input type='text' placeholder='Name'/>
-            </div>
+                <input type='text' placeholder='Username'/>
+            </div>}
             <div className='input'>
                 <img src={email_icon} alt=''/>
                 <input type='email' placeholder='Email'/>
@@ -29,7 +29,7 @@ export const LoginSignup = () => {
                 <input type='password' placeholder='Password'/>
             </div>
         </div>
-        <div className="forgot-password">Forgot Password? <span>Click Here</span></div>
+        {action==="Demo User"?<div/>:<div className="forgot-password">Forgot Password? <span>Click Here</span></div>}
         <div className="submit-container">
             <div className={action==="Login"?"submit":"submit gray"} onClick={() => setAction("Login")}>Login</div>
             <div className={action==="Demo User"?"submit":"submit gray"} onClick={() => setAction("Demo User")}>Demo User</div>
