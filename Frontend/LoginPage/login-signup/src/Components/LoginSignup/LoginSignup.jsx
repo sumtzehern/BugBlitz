@@ -31,8 +31,8 @@ export const LoginSignup = () => {
         </div>
         <div className="forgot-password">Forgot Password? <span>Click Here</span></div>
         <div className="submit-container">
-            <div className={action==="Login"?"submit gray":"submit"} onClick={() => setAction("Login")}>Log in</div>
-            <div className={action==="Sign Up"?"submit gray":"submit"} onClick={() => setAction("Demo User")}>Demo User</div>
+            <div className={action==="Login"?"submit":"submit gray"} onClick={() => setAction("Login")}>Login</div>
+            <div className={action==="Demo User"?"submit":"submit gray"} onClick={() => setAction("Demo User")}>Demo User</div>
         </div>    
     </div>
   )

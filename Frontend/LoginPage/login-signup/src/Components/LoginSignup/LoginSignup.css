@@ -31,7 +31,7 @@
 }
 
 .underline {
-  width: 60px;
+  width: 100px;
   height: 6px;
   background: #518aa6;
   border-radius: 10px;
@@ -94,24 +94,14 @@
   width: 180px;
   height: 59px;
   color: white;
-  background-color: #518aa6;
+  background-color: #5393b4;
   border-radius: 50px;
   font-size: 19px;
   font-weight: 700;
   cursor: pointer;
 }
 
-/* .sign-up {
-  position: absolute;
-  bottom: 70px;
-  right: 450px;
-  color: grey;
-  font-size: 16px;
-  font-weight: 400;
-  cursor: pointer;
-} */
-
 .gray {
-  background:grey;
-  color: white;
+  background: rgba(40, 39, 39, 0.8);
+  color: grey;
 }
