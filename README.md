@@ -1,3 +1,2 @@
 # BugBlitz
-
-## Full Stack Bug Tracker Ticketing System
+Full Stack Bug Tracker Ticketing System
