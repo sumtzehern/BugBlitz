@@ -16,21 +16,21 @@ import QuizRoundedIcon from "@mui/icons-material/QuizRounded"; //faq
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded"; //calen
 
-const Item = ({ title, to, icon, selected, setSelected}) => {
-    const theme = useTheme()
-    const colors = tokens(theme.palette.mode);
-    return (
-    <MenuItem 
-        active={selected === title } 
-        style={{color: colors.grey[100]}}
-        onClick={() => setSelected(title)}
-        icon={icon}
+const Item = ({ title, to, icon, selected, setSelected }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.primary[100] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
     >
-        <Typography>{title}</Typography>
-        <Link to={to}/>
+      <Typography>{title}</Typography>
+      <Link to={to} />
     </MenuItem>
-    )
-}
+  );
+};
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -42,68 +42,87 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: "${colors.primary[400]} !important",
+          background: colors.grey[100] + " !important",
         },
         "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important"
+          backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important"
+          padding: "5px 35px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
-          backgroundColor: "#0081FB !important"
+          backgroundColor: "#0081FB !important",
         },
         "& .pro-menu-item.active": {
-          color: "#0085FB !important"
+          color: "#0085FB !important",
         },
       }}
     >
-        <ProSidebar collapsed={isCollapsed}>
-            <Menu iconshape="square">
-                {/* LOGO AND MENU ITEM*/}
-                <MenuItem onClick={() => setIsCollapsed(!isCollapsed)} 
-                icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-                style={{
-                    margin: "10px 0 20px 0",
-                    borderRadius: "30px",
-                    color: colors.primary[900],
-                }}
+      <ProSidebar collapsed={isCollapsed}>
+        <Menu iconshape="square">
+          {/* LOGO AND MENU ITEM*/}
+          <MenuItem
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+            style={{
+              margin: "10px 0 20px 0",
+              borderRadius: "30px",
+              color: colors.primary[900],
+            }}
+          >
+            {!isCollapsed && (
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                ml="15px"
+              >
+                <Typography variant="h2" color={colors.grey[900]}>
+                  ADMINS
+                </Typography>
+                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                  <MenuOutlinedIcon />
+                </IconButton>
+              </Box>
+            )}
+          </MenuItem>
+
+          {/* USER */}
+          {!isCollapsed && (
+            <Box mb="25px">
+              <Box
+                display="flex"
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <img
+                  alt="profile-user"
+                  width={"60px"}
+                  height={"60px"}
+                  style={{ borderRadius: "20px", cursor: "pointer" }}
+                  src={"../../assets/user.png"}
+                />
+              </Box>
+
+              <Box textAlign={"center"}>
+                <Typography
+                  variant="h6"
+                  color={colors.grey[900]}
+                  fontWeight="bold"
+                  sx={{
+                    m: "10px 0 0 0",
+                  }}
                 >
-                    {!isCollapsed && (
-                        <Box display="flex" justifyContent="space-between" alignItems="center" ml ="15px">
-                            <Typography variant="h6" color={colors.grey[900]}>
-                                ADMINS
-                            </Typography>
-                            <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                                <MenuOutlinedIcon />
-                            </IconButton>
-                        </Box>
-                    )}
-                </MenuItem>
-
-                {/* USER */}
-                {!isCollapsed && (
-                    <Box mb="25px">
-                        <Box display="flex" justifyContent={"center"} alignItems={"center"}>
-                            <img 
-                            alt="profile-user"
-                            width={"60px"}
-                            height={"60px"}
-                            style={{borderRadius:"20px", cursor:"pointer"}}
-                            src={"../../assets/user.png"}
-                            />
-                        </Box>
-
-                        <Box textAlign={"center"}>
-                            <Typography variant="h6" color={colors.grey[900]} fontWeight="bold" sx={{
-                                m: "10px 0 0 0"
-                            }}>Jason P</Typography>
-                            <Typography color={colors.greenAccent[600]} >Product Manager</Typography>
-                        </Box>
-                    </Box>
-                )}
-                {/* MENU ITEM */}
-                {/* <Box paddingLeft={isCollapsed ?undefined : "10%"}>
+                  Jason P
+                </Typography>
+                <Typography color={colors.greenAccent[600]}>
+                  Product Manager
+                </Typography>
+              </Box>
+            </Box>
+          )}
+          {/* MENU ITEM */}
+          {/* <Box paddingLeft={isCollapsed ?undefined : "10%"}>
                         <Item 
                             title={"Dashboard"}
                             to="/"
@@ -189,8 +208,8 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                 </Box> */}
-            </Menu>
-        </ProSidebar>
+        </Menu>
+      </ProSidebar>
     </Box>
   );
 };
