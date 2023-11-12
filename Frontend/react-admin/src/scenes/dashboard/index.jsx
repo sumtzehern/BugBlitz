@@ -1,6 +1,8 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Button, IconButton, Typography, useTheme, Menu, MenuItem} from "@mui/material";
 import { tokens } from "../../theme";
+import React, { useState } from "react";
 import { mockTransactions } from "../../data/mockData";
+import CreatNew from "./CreateNew"; //create new button
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
@@ -12,6 +14,7 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import AddIcon from "@mui/icons-material/Add"; //create new ticket icon
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -22,7 +25,7 @@ const Dashboard = () => {
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
       <Box>
-        <Button
+        {/* <Button
           sx={{
             backgroundColor: colors.blueAccent[1000],
             color: colors.grey[100],
@@ -36,8 +39,19 @@ const Dashboard = () => {
           }}
         >
           <AddIcon sx={{ mr: "10px" }} />
-          Create new Tickets
-        </Button>
+          Create new
+        </Button> */}
+        <CreatNew sx={{
+            backgroundColor: colors.blueAccent[1000],
+            color: colors.grey[100],
+            fontSize: "14px",
+            fontWeight: "bold",
+            padding: "10px 20px",
+            borderRadius: "30px",
+            "&:hover": {
+              backgroundColor: colors.blueAccent[1001],
+            },
+          }}/>
       </Box>
       </Box>
 
@@ -46,7 +60,7 @@ const Dashboard = () => {
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="130px"
-        gap="20px"
+        gap="15px"
       >
         {/* ROW 1 */}
         <Box
@@ -59,7 +73,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="12,361"
-            subtitle="Emails Sent"
+            subtitle="Total Ticktes"
             progress="0.75"
             increase="+14%"
             icon={
@@ -79,7 +93,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="431,225"
-            subtitle="Sales Obtained"
+            subtitle="Total Project"
             progress="0.50"
             increase="+21%"
             icon={
@@ -151,7 +165,7 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Revenue Generated
+                Project Timeline
               </Typography>
               <Typography
                 variant="h3"
@@ -189,7 +203,7 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+              Recent Issues
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
@@ -227,14 +241,14 @@ const Dashboard = () => {
 
         {/* ROW 3 */}
         <Box
-          gridColumn="span 5"
+          gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[500]}
           p="30px"
           sx={{ borderRadius: "20px" }}
         >
           <Typography variant="h5" fontWeight="600">
-            Campaign
+          Severity and Priority
           </Typography>
           <Box
             display="flex"
@@ -254,7 +268,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 6"
+          gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[500]}
           sx={{ borderRadius: "20px" }}
@@ -264,7 +278,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Sales Quantity
+            Tickets Status
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
