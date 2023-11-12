@@ -5,9 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard"; //da
-// import Project from "./scenes/project";
+import Project from "./scenes/project";
 // import Tickets from "./scenes/tickets";
-// import Team from "./scenes/team";
+import Team from "./scenes/team";
 // import Bar from "./scenes/bar";
 // import Form from "./scenes/form";
 // import Line from "./scenes/line";
@@ -29,8 +29,8 @@ function App() {
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/project" element={<Project />} /> */}
-              {/* <Route path="/team" element={<Team />} /> */}
+              <Route path="/project" element={<Project />} />
+              <Route path="/team" element={<Team />} />
               {/* <Route path="/tickets" element={<Tickets />} /> */}
               {/* <Route path="/form" element={<Form />} /> */}
               {/* <Route path="/bar" element={<Bar />} /> */}
