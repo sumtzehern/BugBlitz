@@ -166,8 +166,8 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Calender"
-              to="/calender"
+              title="Calendar"
+              to="/calendar"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -187,7 +187,7 @@ const Sidebar = () => {
               Charts
             </Typography>
             <Item
-              title="Bar"
+              title="Bar Chart"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
