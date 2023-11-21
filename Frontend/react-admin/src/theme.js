@@ -168,7 +168,7 @@ export const themeSettings = (mode) => {
               light: colors.grey[100],
             },
             background: {
-              default: colors.primary[700],
+              default: colors.primary[800],
             },
           }
         : {
@@ -180,9 +180,9 @@ export const themeSettings = (mode) => {
               main: colors.greenAccent[500],
             },
             neutral: {
-              dark: colors.grey[700],
-              main: colors.grey[500],
-              light: colors.grey[100],
+              dark: colors.grey[900],
+              main: colors.grey[900],
+              light: colors.grey[900],
             },
             background: {
               default: "#f2e9e4",
