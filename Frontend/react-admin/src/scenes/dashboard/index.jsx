@@ -73,7 +73,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="12,361"
-            subtitle="Total Ticktes"
+            subtitle="Open Ticktes"
             progress="0.75"
             increase="+14%"
             icon={
@@ -93,7 +93,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="431,225"
-            subtitle="Total Project"
+            subtitle="Close Project"
             progress="0.50"
             increase="+21%"
             icon={
@@ -113,7 +113,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="32,441"
-            subtitle="New Clients"
+            subtitle="This Week"
             progress="0.30"
             increase="+5%"
             icon={
@@ -133,7 +133,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="1,325,134"
-            subtitle="Traffic Received"
+            subtitle="This Month"
             progress="0.80"
             increase="+43%"
             icon={
