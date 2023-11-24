@@ -22,7 +22,7 @@ const CreateNew = () => {
                 color: colors.grey[100],
                 fontSize: "12px",
                 fontWeight: "bold",
-                padding: "8px 15px",
+                padding: "8px 10px",
                 borderRadius: "30px",
                 marginLeft: "auto",
                 "&:hover": {

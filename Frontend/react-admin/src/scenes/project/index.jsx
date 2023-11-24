@@ -4,6 +4,7 @@ import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
+import CreateNew from "./CreateNew";
 
 const Projects = () => {
   const theme = useTheme();
@@ -54,12 +55,17 @@ const Projects = () => {
 
   return (
     <Box m="20px">
-      <Header
-        title="PROJECTS"
-        subtitle="List of Projects"
-      />
       <Box
-        m="40px 0 0 0"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        m="8px 0"
+      >
+        <Header title="PROJECTS" subtitle="List of Projects" />
+        <CreateNew />
+      </Box>
+      <Box
+        m="10px 0 0 0"
         height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
