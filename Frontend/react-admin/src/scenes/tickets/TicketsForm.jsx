@@ -5,51 +5,30 @@ import {
   MenuItem,
   TextField,
   InputLabel,
+  Grid,
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
-// const useStyle = makeStyles(theme => ({
-//   root:{
-//     '& .MuiGrid-root' : {
-//       width:'80%',
-//       margin: theme.spacing(1)
-//     }
-//   }
-// }))
-
-const initialValues = {
-  title: "",
-  description: "",
-  priority: "",
-  type: "",
-  time: 0,
-};
-
 const TicketsForm = () => {
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
-  // const [values, setValues] = useState(initialValues)
-  // const classes = useStyle();
-
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
-    console.log(values);
+    const updatedValues = { ...values, date: new Date() }; // the date when submit button press
+    console.log(updatedValues);
   };
 
   return (
-    // <Grid container className="{classes.root}">
-    //     <Grid item xs={6}>
-    //       <TextField variant="outlined" label="Title" value={values.title} />
-    //       <TextField variant="outlined" label="Description" value={values.description} />
-    //     </Grid>
-    //     <Grid item xs={6}></Grid>
-    // </Grid>
     <Box m="20px" sx={{ borderRadius: "30px" }}>
-      <Formik onSubmit={handleFormSubmit} initialValues={initialValues}>
+      <Header title="CREATE TICKET" subtitle="Create a Ticket" />
+
+      <Formik
+        onSubmit={handleFormSubmit}
+        initialValues={initialValues}
+        validationSchema={checkoutSchema}
+      >
         {({
           values,
           errors,
@@ -63,64 +42,96 @@ const TicketsForm = () => {
               display="grid"
               gap="30px"
               borderRadius={"30px"}
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+              gridTemplateColumns="repeat(6, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 6" },
               }}
             >
-              <InputLabel htmlFor="role" sx={{ marginBottom: -10 }}>
-                Title
-              </InputLabel>
               <TextField
                 fullWidth
-                variant="outlined"
+                variant="filled"
                 type="text"
                 label="Title"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.firstName}
+                value={values.title}
                 name="title"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 4" }}
+                error={!!touched.title && !!errors.title}
+                helperText={touched.title && errors.title}
+                sx={{ gridColumn: "span 6" }}
               />
-              <InputLabel htmlFor="role" sx={{ marginBottom: -10 }}>
-                Description
-              </InputLabel>
               <TextField
                 fullWidth
-                variant="outlined"
-                multiline // Set multiline to true
-                rows={4} // Adjust the number of visible rows
+                variant="filled"
                 label="Description"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.email}
+                value={values.description}
                 name="description"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
+                error={!!touched.description && !!errors.description}
+                helperText={touched.description && errors.description}
+                sx={{ gridColumn: "span 6" }}
+                multiline
+                rows={4}
               />
-              <InputLabel htmlFor="role">Priority</InputLabel>
-              <Select
+              <TextField
                 fullWidth
-                variant="outlined"
-                label="priority"
+                variant="filled"
+                type="number"
+                label="Time Estimate(In hours)"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.role || ""}
-                name="priority"
-                error={!!touched.role && !!errors.role}
-                sx={{ gridColumn: "span 1" }}
-              >
-                <MenuItem value="" disabled>
-                  Select
-                </MenuItem>
-                <MenuItem value="low">Low</MenuItem>
-                <MenuItem value="medium">Medium</MenuItem>
-                <MenuItem value="high">High</MenuItem>
-              </Select>
+                value={values.time}
+                name="time"
+                error={!!touched.time && !!errors.time}
+                helperText={touched.time && errors.time}
+                inputProps={{ min: 0 }}
+                sx={{ gridColumn: "span 6" }}
+              />
             </Box>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={6}>
+                <InputLabel htmlFor="priority" sx={{ marginTop: 2 }}>Priority</InputLabel>
+                <Select
+                  fullWidth
+                  variant="filled"
+                  label="Priority"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.priority || ""}
+                  name="priority"
+                  error={!!touched.priority && !!errors.priority}
+                >
+                  <MenuItem value="" disabled>
+                    Select Priority
+                  </MenuItem>
+                  <MenuItem value="Low">Low</MenuItem>
+                  <MenuItem value="Medium">Medium</MenuItem>
+                  <MenuItem value="High">High</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item xs={6}>
+                <InputLabel htmlFor="type" sx={{ marginTop: 2 }}>Type</InputLabel >
+                <Select
+                  fullWidth
+                  variant="filled"
+                  label="Type"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.type || ""}
+                  name="type"
+                  error={!!touched.type && !!errors.type}
+                >
+                  <MenuItem value="" disabled>
+                    Select Type
+                  </MenuItem>
+                  <MenuItem value="Issue">Issue</MenuItem>
+                  <MenuItem value="Feature">Feature</MenuItem>
+                  <MenuItem value="Bug">Bug</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
+                </Select>
+              </Grid>
+            </Grid>
             <Box
               display="flex"
               justifyContent="end"
@@ -128,7 +139,7 @@ const TicketsForm = () => {
               borderRadius={"30px"}
             >
               <Button type="submit" color="secondary" variant="contained">
-                Create
+                Submit
               </Button>
             </Box>
           </form>
@@ -136,6 +147,22 @@ const TicketsForm = () => {
       </Formik>
     </Box>
   );
+};
+
+const checkoutSchema = yup.object().shape({
+  title: yup.string().required("required"),
+  description: yup.string().required("required"),
+  type: yup.string().required("Please select a typw"),
+  priority: yup.string().required("Please select a role"),
+});
+
+const initialValues = {
+  title: "",
+  description: "",
+  priority: "",
+  type: "",
+  time: 0,
+  date: new Date(),
 };
 
 export default TicketsForm;

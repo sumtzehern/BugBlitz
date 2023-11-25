@@ -22,7 +22,7 @@ const CreateNew = () => {
                 color: colors.grey[100],
                 fontSize: "12px",
                 fontWeight: "bold",
-                padding: "8px 15px",
+                padding: "10px 15px",
                 borderRadius: "30px",
                 marginLeft: "auto",
                 "&:hover": {
@@ -32,6 +32,7 @@ const CreateNew = () => {
             {...bindTrigger(popupState)}
           >
             <AddIcon borderRadius/>
+            Add New
           </Button>
         </React.Fragment>
       )}
