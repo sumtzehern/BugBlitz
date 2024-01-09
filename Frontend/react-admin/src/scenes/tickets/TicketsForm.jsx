@@ -11,13 +11,17 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+import * as localTickets from "../../backendLocalStorage/localTickets"
 
 const TicketsForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = async (values, {resetForm}) => {
     const updatedValues = { ...values, date: new Date() }; // the date when submit button press
-    console.log(updatedValues);
+    await localTickets.insertTicket(updatedValues);
+
+    // Reset the form
+    resetForm();
   };
 
   return (
