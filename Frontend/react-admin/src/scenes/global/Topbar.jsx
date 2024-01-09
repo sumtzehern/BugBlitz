@@ -14,12 +14,15 @@ const Topbar = () => {
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
 
+  const searchBackgroundColor =
+    theme.palette.mode === "dark" ? colors.primary[400] : colors.primary[700];
+
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* SEARCH BAR */}
       <Box
         display="flex"
-        backgroundColor={colors.primary[400]}
+        backgroundColor= {searchBackgroundColor}
         borderRadius="30px"
       >
         <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
