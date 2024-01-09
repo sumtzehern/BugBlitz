@@ -55,10 +55,10 @@ const Sidebar = () => {
           color: "#e8e8e8 !important",
         },
         "& .pro-inner-item:hover": {
-          color: "grey !important",
+          color: `${colors.greenAccent[500]} !important`,
         },
         "& .pro-menu-item.active": {
-          color: colors.greenAccent[500],
+          color: `${colors.greenAccent[500]} !important`,
         },
       }}
     >
