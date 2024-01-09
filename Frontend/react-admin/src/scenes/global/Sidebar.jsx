@@ -52,12 +52,13 @@ const Sidebar = () => {
         },
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
+          color: "#e8e8e8 !important",
         },
         "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
+          color: "grey !important",
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          color: colors.greenAccent[500],
         },
       }}
     >
@@ -68,7 +69,7 @@ const Sidebar = () => {
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
-              color: colors.grey[100],
+              color: colors.grey[500],
             }}
           >
             {!isCollapsed && (
@@ -126,7 +127,7 @@ const Sidebar = () => {
             />
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={colors.grey[600]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Data
@@ -154,7 +155,7 @@ const Sidebar = () => {
             />
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={colors.grey[600]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Pages
@@ -182,7 +183,7 @@ const Sidebar = () => {
             /> */}
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={colors.grey[600]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Charts
